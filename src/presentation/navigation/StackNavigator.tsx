@@ -1,7 +1,8 @@
 import {createStackNavigator} from '@react-navigation/stack';
+
+import {MapScreen} from '../screens/maps/MapScreen';
 import {LoadingScreen} from '../screens/loading/LoadingScreen';
 import {PermissionsScreen} from '../screens/permissions/PermissionsScreen';
-import {MapScreen} from '../screens/maps/MapScreen';
 
 export type RootStackParms = {
   LoadingScren: undefined;
@@ -15,6 +16,7 @@ export const StackNavigator = () => {
   return (
     <Stack.Navigator
       initialRouteName="LoadingScren"
+      // initialRouteName='PermissionsScreen'
       screenOptions={{
         headerShown: false,
         cardStyle: {
