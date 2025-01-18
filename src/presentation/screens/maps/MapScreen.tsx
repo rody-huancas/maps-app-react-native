@@ -1,31 +1,31 @@
 import {StyleSheet, View} from 'react-native';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import {Map} from '../../components/maps/Map';
+import {useLocationStore} from '../../store/location/useLocationStore';
+import {LoadingScreen} from '../loading/LoadingScreen';
+import {useEffect} from 'react';
 
 export const MapScreen = () => {
+  const {lastKnowLocation, getLocation} = useLocationStore();
+
+  useEffect(() => {
+    if (lastKnowLocation === null) {
+      getLocation();
+    }
+  }, []);
+
+  if (lastKnowLocation === null) {
+    return <LoadingScreen />;
+  }
+
   return (
     <View style={styles.container}>
-      <MapView
-        provider={PROVIDER_GOOGLE}
-        style={styles.map}
-        region={{
-          latitude: 37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 0.015,
-          longitudeDelta: 0.0121,
-        }}></MapView>
+      <Map initialLocation={lastKnowLocation} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    ...StyleSheet.absoluteFillObject,
-    height: 400,
-    width: 400,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  map: {
     ...StyleSheet.absoluteFillObject,
   },
 });
