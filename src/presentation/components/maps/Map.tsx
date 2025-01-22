@@ -81,8 +81,8 @@ export const Map = ({showsUserLocation = true, initialLocation}: Props) => {
         region={{
           latitude: cameraLocation.current.latitude,
           longitude: cameraLocation.current.longitude,
-          latitudeDelta: 0.015,
-          longitudeDelta: 0.0121,
+          latitudeDelta: 0.005,
+          longitudeDelta: 0.005,
         }}>
         {isShowingPolyline && (
           <Polyline
@@ -94,8 +94,8 @@ export const Map = ({showsUserLocation = true, initialLocation}: Props) => {
 
         <Marker
           coordinate={{
-            latitude: 37.78825,
-            longitude: -122.4324,
+            latitude:  -6.77137,
+            longitude: -79.84088,
           }}
           title="Título del marcardor"
           description="Cuerpo del marcador!!!!!"
